@@ -1,0 +1,25 @@
+/*Aqui estou resetando o CSS padrão dos navegadores*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.menu {
+  background-color: antiquewhite;
+}
+
+.menu-links ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 10%;
+}
+
+.menu-links ul li {
+  padding-left: 6%;
+}
+
+.menu-links .links {
+  text-decoration: none;
+}
