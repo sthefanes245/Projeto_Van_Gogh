@@ -5,21 +5,262 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/*Configurações menu*/
 .menu {
-  background-color: antiquewhite;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+.menu .container-topo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 6rem;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .menu-links ul {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  padding-right: 10%;
+  gap: 3rem; /*espaçamento entre os itens*/
+  list-style: none;
+  padding-right: 2.5rem;
 }
 
-.menu-links ul li {
-  padding-left: 6%;
-}
-
-.menu-links .links {
+.menu-links a {
   text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.menu-links a:hover {
+  color: #ffd700;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+
+.imagem-banner {
+  position: relative;
+  background-image: url("/imagens/sunflowers.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+}
+
+.imagem-banner::before {
+  content: ""; /*coloco por causa dps pseudo-elemetos*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.23
+  ); /*opacidade na imagem para melhorar a visualização*/
+  z-index: 1;
+}
+
+.imagem-banner .texto-banner {
+  height: 100%;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /*importante para a responsividade, para o texto não ficar apertado em telas menores*/
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.imagem-banner h1 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 5rem;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.imagem-banner h2 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.2rem;
+  opacity: 0.8;
+}
+/*Fim da parte Home*/
+
+/*Parte Galeria*/
+.galeria {
+  padding: 4rem 1rem;
+  margin: 0 auto; /*centraliza o container*/
+  background-color: #ffd700;
+}
+
+.galeria-titulo {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: #5d250c;
+}
+
+/*parte da grade*/
+.grid-obras {
+  gap: 3rem; /*Espaço entre os itens da grade*/
+  margin-bottom: 4rem;
+}
+
+.pagina-galeria {
+  display: none; /*aqui vai esconder todas as divisões da página, pq só quero que a que tiver a classe pagina-ativa seja exibida*/
+  gap: 3rem;
+}
+
+.pagina-galeria.pagina-ativa {
+  /*Seletor sem espaço, pois o elementos possui ambas classes*/
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.obra-item {
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.obra-imagem {
+  object-fit: cover; /*preenche sem distorcer a imagem*/
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.obra-imagem-quadrado {
+  width: 100%;
+  height: 90%;
+  overflow: hidden; /*aqui vai esconder as partes da imagem que excederem o quadrado*/
+}
+
+.obra-info {
+  padding: 0.5rem;
+  margin-top: auto;
+}
+
+.obra-imagem:hover {
+  transform: scale(1.05); /* Zoom  ao passar o mouse */
+}
+
+.obra-info {
+  padding: 1rem 0;
+}
+
+.obra-titulo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.obra-artista,
+.obra-data {
+  font-size: 1.4rem;
+  color: #666;
+  margin: 0.2rem 0;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 4rem;
+}
+
+.pagina-link {
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.6rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.pagina-link:hover,
+.pagina-ativa {
+  background-color: #5d250c; /* Cor de destaque/ativo */
+  color: #fff;
+  border-color: #5d250c;
+}
+
+/*Voltar para o topo*/
+.voltar-topo {
+  text-align: center;
+}
+
+.btn-topo {
+  text-decoration: none;
+  display: inline-block;
+  color: #333;
+  border: 1px solid #333;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.btn-topo:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/*texto do topo */
+@media (max-width: 768px) {
+  .imagem-banner h1 {
+    font-size: 3rem; /* Reduz o h1 em telas menores */
+  }
+
+  .imagem-banner h2 {
+    font-size: 1.4rem; /* Reduz o h2 em telas menores */
+    margin-bottom: 0.5rem; /* Reduz o espaço inferior */
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-obras {
+    /* A grade já é responsiva graças ao 'auto-fit' e 'minmax', mas podemos ajustar o espaçamento */
+    gap: 2rem;
+  }
 }
